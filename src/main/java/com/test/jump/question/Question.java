@@ -40,6 +40,9 @@ public class Question {
     @ManyToOne
     private SiteUser author;
 
+    @Column(length = 500)
+    private String ImagePath;
+
     private LocalDateTime createDate;
 
 }

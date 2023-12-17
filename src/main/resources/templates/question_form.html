@@ -1,7 +1,8 @@
+<html xmlns:th="http://www.thymeleaf.org">
 <html layout:decorate="~{layout}">
 <div layout:fragment="content" class="container">
   <h5 class="my-3 border-bottom pb-2">질문등록</h5>
-  <form th:action="@{/question/create}" th:object="${questionForm}" method="post">
+  <form th:action="@{/question/create}" th:object="${questionForm}" method="post" enctype="multipart/form-data">
     <div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
       <div th:each="err : ${#fields.allErrors()}" th:text="${err}" />
     </div>
@@ -12,6 +13,8 @@
     <div class="mb-3">
       <label for="content" class="form-label">내용</label>
       <textarea th:field="*{content}" name="content" id="content" class="form-control" rows="10"></textarea>
+      <label for="image" class="form-label">이미지 첨부</label>
+      <input type="file" name="image" id="image" />
     </div>
     <input type="submit" value="저장하기" class="btn btn-primary my-2">
   </form>
